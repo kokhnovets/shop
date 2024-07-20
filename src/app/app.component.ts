@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     private readonly _modalService: BsModalService
   ) {
     this.products$ = this._store.select(selectAllProducts);
-    this.products$.subscribe((val) => console.log(val));
   }
 
   public ngOnInit(): void {
