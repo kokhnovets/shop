@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="my-2 d-flex justify-content-between">
+    <h2>Список продуктов</h2>
+    <button (click)="addProduct()" class="btn btn-primary btn-sm me-2">
+      Добавить
+    </button>
+  </div>
+  <div *ngIf="products$ | async as products">
+    <ul class="list-group">
+      <li
+        *ngFor="let product of products"
+        class="list-group-item d-flex align-items-center justify-content-between"
+      >
+        <p>
+          {{ product.name }} -
+          {{ product.price | currency : "RUB" : "symbol-narrow" }}
+        </p>
+        <div>
+          <button
+            (click)="editProduct(product)"
+            class="btn btn-primary btn-sm me-2"
+          >
+            Редактировать
+          </button>
+          <button
+            (click)="deleteProduct(product.id)"
+            class="btn btn-danger btn-sm"
+          >
+            Удалить
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
